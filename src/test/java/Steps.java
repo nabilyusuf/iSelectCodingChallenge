@@ -28,8 +28,8 @@ public class Steps {
     @Aliases(values = {"Robot move to <command> whats the  <position> "})
     public void isTheRobotAtCorrectPosition(@Named("command") String command, @Named("position") String position) {
         System.out.println("Command is  " + command + " Now the Location is "+position) ;
-        Controller controller = new Controller(this.robot,this.table);
-        controller.parse(command);
-        assertEquals( robot.report(),position);
+        this.controller = new Controller(this.robot,this.table);
+        this.controller.parse(command);
+        assertEquals( controller.getRobot().report(),position);
     }
 }
