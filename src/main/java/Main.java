@@ -14,7 +14,7 @@ public class Main {
         while(sc.hasNext()) {
             String s1 = sc.nextLine() ;
             commander.parse(s1);
-            if(s1.equals("exit")) {
+            if(s1.equals("EXIT")) {
                 break;
             }
         }
