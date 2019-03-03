@@ -13,7 +13,6 @@ public class Main {
         System.out.println("Input:");
         while(sc.hasNext()) {
             String s1 = sc.nextLine() ;
-//            System.out.println(s1);
             commander.parse(s1);
             if(s1.equals("exit")) {
                 break;

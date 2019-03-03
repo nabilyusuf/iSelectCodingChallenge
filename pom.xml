@@ -14,7 +14,18 @@
             <artifactId>jbehave-core</artifactId>
             <version>4.4</version>
         </dependency>
+        <dependency>
+            <groupId>org.jbehave</groupId>
+            <artifactId>jbehave-maven-plugin</artifactId>
+            <version>4.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy-all</artifactId>
+            <version>1.8.4</version>
+        </dependency>
     </dependencies>
+
 
     <build>
         <testResources>
@@ -23,6 +34,42 @@
             </testResource>
         </testResources>
         <plugins>
+            <plugin>
+                <groupId>org.jbehave</groupId>
+                <artifactId>jbehave-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>embeddable-stories</id>
+                        <phase>test</phase>
+                        <configuration>
+                            <includes>
+                                <include>**/RobotMovement.java</include>
+                            </includes>
+                            <scope>test</scope>
+                            <sourceDirectory>src/test/java</sourceDirectory>
+                            <testSourceDirectory>src/test/resources</testSourceDirectory>
+                            <batch>false</batch>
+                            <generateViewAfterStories>true</generateViewAfterStories>
+                            <ignoreFailureInView>true</ignoreFailureInView>
+                        </configuration>
+                        <goals>
+                            <goal>run-stories-as-embeddables</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>Main</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -33,6 +80,5 @@
             </plugin>
         </plugins>
     </build>
-
 
 </project>
