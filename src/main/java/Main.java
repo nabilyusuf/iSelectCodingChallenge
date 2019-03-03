@@ -10,7 +10,7 @@ public class Main {
         Robot robot = new Robot();
         Controller commander = new Controller(robot, table);
         Scanner sc = new Scanner(System.in);
-        System.out.println("Input:");
+        System.out.println("Input (Type EXIT to terminate) : ");
         while(sc.hasNext()) {
             String s1 = sc.nextLine() ;
             commander.parse(s1);
